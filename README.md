@@ -9,6 +9,7 @@ NodeJs v16
 ```
 npm install
 npm run dev
+npm run watch
 ```
 
 - Client
