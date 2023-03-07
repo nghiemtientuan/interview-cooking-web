@@ -43,12 +43,12 @@ const HeaderComponent = () => {
             </div>
 
             <ul className="uk-navbar-nav uk-visible@m">
-              <li><a href="sign-in.html">Sign In</a></li>
+              <li><a href={pathUrl.user.SignIn}>Sign In</a></li>
             </ul>
 
             <div className="uk-navbar-item">
               <div>
-                <a className="uk-button uk-button-primary" href="sign-up.html">Sign Up</a>
+                <a className="uk-button uk-button-primary" href={pathUrl.user.SignUp}>Sign Up</a>
               </div>
             </div>
 
