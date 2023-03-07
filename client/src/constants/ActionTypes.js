@@ -10,3 +10,7 @@ export const DELETE_TASK_SUCCESS = 'tasks/DELETE_TASK_SUCCESS';
 /* Categories */
 export const FETCH_CATEGORIES = 'categories/FETCH_CATEGORIES';
 export const FETCH_CATEGORIES_SUCCESS = 'categories/FETCH_CATEGORIES_SUCCESS';
+
+/* Videos */
+export const FETCH_VIDEOS = 'videos/FETCH_VIDEOS';
+export const FETCH_VIDEOS_SUCCESS = 'videos/FETCH_VIDEOS_SUCCESS';
