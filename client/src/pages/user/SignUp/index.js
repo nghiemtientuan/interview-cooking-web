@@ -1,6 +1,15 @@
 import React from 'react';
-import {pathUrl} from "../../../routes/routes";
-import {app} from "../../../utils/app";
+import { css } from '@emotion/react';
+
+import { pathUrl } from 'Src/routes/routes';
+import { app } from 'Src/utils/app';
+
+import signUpImage from 'Public/assets/img/sign-up.png';
+
+// styles
+const signUpImageStyle = css`
+  background: url('${signUpImage}');
+`;
 
 const SignUp = () => {
   return (
@@ -84,6 +93,7 @@ const SignUp = () => {
       >
         <div
           className="uk-background-cover uk-background-norepeat uk-background-blend-overlay uk-background-overlay uk-border-rounded-large uk-width-1-1 uk-height-xlarge uk-flex uk-flex-middle uk-flex-center"
+          css={signUpImageStyle}
         >
           <div className="uk-padding-large">
             <div className="uk-text-center">
