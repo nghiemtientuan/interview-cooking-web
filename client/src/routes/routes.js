@@ -4,6 +4,7 @@ import ContactPage from '../pages/user/ContactPage';
 import SignIn from "../pages/user/SignIn";
 import SignUp from "../pages/user/SignUp";
 import RecipePage from "../pages/user/RecipePage";
+import NotFound from "../pages/NotFound";
 
 export const pathUrl = {
   user: {
@@ -41,6 +42,10 @@ const routes = [
     path: pathUrl.user.SignUp,
     exact: true,
     main:() => <SignUp />
+  },
+  {
+    path: '*',
+    main:() => <NotFound />
   },
 ];
 

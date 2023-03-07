@@ -1,5 +1,6 @@
 import React from 'react';
 import {pathUrl} from "../../../routes/routes";
+import {app} from "../../../utils/app";
 
 const SignUp = () => {
   return (
@@ -7,7 +8,7 @@ const SignUp = () => {
       <div className="uk-width-1-2@m uk-padding-large uk-flex uk-flex-middle uk-flex-center" data-uk-height-viewport>
         <div className="uk-width-3-4@s">
           <div className="uk-text-center uk-margin-bottom">
-            <a className="uk-logo uk-text-primary uk-text-bold" href={pathUrl.user.HomePage}>Kocina</a>
+            <a className="uk-logo uk-text-primary uk-text-bold" href={pathUrl.user.HomePage}>{app.name}</a>
           </div>
 
           <div className="uk-text-center uk-margin-medium-bottom">

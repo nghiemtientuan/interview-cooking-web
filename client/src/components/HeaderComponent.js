@@ -2,6 +2,7 @@ import React from 'react';
 
 // routers
 import { pathUrl } from "../routes/routes";
+import {app} from "../utils/app";
 
 const HeaderComponent = () => {
   const menus = [
@@ -20,7 +21,7 @@ const HeaderComponent = () => {
       <div className="uk-container">
         <div className="uk-position-z-index" data-uk-navbar>
           <div className="uk-navbar-left">
-            <a className="uk-navbar-item uk-logo" href={pathUrl.user.HomePage}>Kocina</a>
+            <a className="uk-navbar-item uk-logo" href={pathUrl.user.HomePage}>{app.name}</a>
             <ul className="uk-navbar-nav uk-visible@m uk-margin-large-left">
               {
                 menus.map((menu, menuIndex) => (

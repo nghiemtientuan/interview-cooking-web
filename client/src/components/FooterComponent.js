@@ -1,4 +1,5 @@
 import React from 'react';
+import {app} from "../utils/app";
 
 const FooterComponent = () => {
   return (
@@ -7,7 +8,7 @@ const FooterComponent = () => {
         <div className="uk-container uk-text-secondary uk-text-500">
           <div className="uk-child-width-1-2@s" data-uk-grid>
             <div>
-              <a href="#" className="uk-logo">Kocina</a>
+              <a href="#" className="uk-logo">{app.name}</a>
             </div>
             <div className="uk-flex uk-flex-middle uk-flex-right@s">
               <div data-uk-grid className="uk-child-width-auto uk-grid-small">
@@ -61,7 +62,7 @@ const FooterComponent = () => {
 
       <div id="offcanvas" data-uk-offcanvas="flip: true; overlay: true">
         <div className="uk-offcanvas-bar">
-          <a className="uk-logo" href="index.html">Kocina</a>
+          <a className="uk-logo" href="index.html">{app.name}</a>
           <button className="uk-offcanvas-close" type="button" data-uk-close="ratio: 1.2"></button>
           <ul className="uk-nav uk-nav-primary uk-nav-offcanvas uk-margin-medium-top uk-text-center">
             <li className="uk-active"><a href="index.html">Home</a></li>
