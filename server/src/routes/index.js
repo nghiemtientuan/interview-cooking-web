@@ -1,14 +1,15 @@
 import express from 'express';
 const router = express.Router();
 
-/* user api */
+/* web */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-/* apis */
-router.use('/api', require('./api/index'));
+/* api */
+router.use('/api', require('./api'));
 
+/* not found */
 router.use('*', (req, res, next) => {
   const err = new Error('404 Not Found');
   err.status = 404;

@@ -5,6 +5,7 @@ import logger from 'morgan';
 const errorHandler = require('errorhandler');
 const session = require('express-session');
 const bodyParser = require('body-parser');
+import 'reflect-metadata';
 
 // routers
 import indexRouter from './routes';

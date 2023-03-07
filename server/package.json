@@ -11,7 +11,10 @@
     "transpile": "babel ./src --out-dir dist-server",
     "clean": "rimraf dist-server",
     "watch": "nodemon",
-    "test": "jest"
+    "test": "jest",
+    "migrate:create": "typeorm migration:create",
+    "migrate:up": "typeorm migration:run -d dist-server/config/database.js",
+    "migrate:down": "typeorm migration:revert -d dist-server/config/database.js"
   },
   "dependencies": {
     "@babel/cli": "^7.21.0",
@@ -29,6 +32,8 @@
     "errorhandler": "^1.5.1",
     "express": "~4.16.1",
     "express-session": "^1.17.3",
+    "moment": "^2.29.4",
+    "moment-timezone": "^0.5.41",
     "morgan": "~1.9.1",
     "mysql": "^2.18.1",
     "nodemon": "^2.0.21",

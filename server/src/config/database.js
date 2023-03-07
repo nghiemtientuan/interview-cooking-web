@@ -8,7 +8,13 @@ export const dataConnection = new DataSource({
     username: process.env.DB_USERNAME,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_DATABASE,
-    entities: ['src/entities/*.js'],
+    entities: [
+        __dirname + "/../entities/**/*.js",
+    ],
+    migrations: [
+        __dirname + '/../migrations/**/*.js'
+    ],
     logging: false,
-    synchronize: false,
+    synchronize: true,
+    keepConnectionAlive: true
 });
