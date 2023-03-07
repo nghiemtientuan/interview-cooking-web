@@ -3,6 +3,7 @@ import HomePage from '../pages/user/HomePage';
 import ContactPage from '../pages/user/ContactPage';
 import SignIn from "../pages/user/SignIn";
 import SignUp from "../pages/user/SignUp";
+import RecipePage from "../pages/user/RecipePage";
 
 export const pathUrl = {
   user: {
@@ -10,6 +11,7 @@ export const pathUrl = {
     ContactPage: '/contact',
     SignIn: '/sign-in',
     SignUp: '/sign-up',
+    RecipePage: '/recipes',
   },
   admin: {}
 }
@@ -24,6 +26,11 @@ const routes = [
     path: pathUrl.user.ContactPage,
     exact: true,
     main:() => <ContactPage />
+  },
+  {
+    path: pathUrl.user.RecipePage + '/:id',
+    exact: true,
+    main:() => <RecipePage />
   },
   {
     path: pathUrl.user.SignIn,
