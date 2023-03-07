@@ -1,22 +1,17 @@
 import React from 'react';
 
+// routers
+import { pathUrl } from "../routes/routes";
+
 const HeaderComponent = () => {
   const menus = [
     {
       name: 'Home',
-      link: '/',
-    },
-    {
-      name: 'Recipe',
-      link: 'recipe.html',
-    },
-    {
-      name: 'Search',
-      link: 'search.html',
+      link: pathUrl.user.HomePage,
     },
     {
       name: 'Contact',
-      link: 'contact.html',
+      link: pathUrl.user.ContactPage,
     }
   ];
 
@@ -25,7 +20,7 @@ const HeaderComponent = () => {
       <div className="uk-container">
         <div className="uk-position-z-index" data-uk-navbar>
           <div className="uk-navbar-left">
-            <a className="uk-navbar-item uk-logo" href="index.html">Kocina</a>
+            <a className="uk-navbar-item uk-logo" href={pathUrl.user.HomePage}>Kocina</a>
             <ul className="uk-navbar-nav uk-visible@m uk-margin-large-left">
               {
                 menus.map((menu, menuIndex) => (

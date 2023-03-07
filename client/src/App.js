@@ -1,10 +1,10 @@
 import React from 'react';
-import { Switch, Route, HashRouter } from 'react-router-dom';
+import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 
 import './App.css';
 import routes from './routes/routes';
 
-const App = (props) => {
+const App = () => {
   const showContentMenu = (routes) => {
     let result = null;
     if (routes.length > 0) {
@@ -24,18 +24,16 @@ const App = (props) => {
   };
 
   return (
-    <HashRouter>
+    <Router>
       <div className="container">
         <div className="row">
           { showContentMenu(routes) }
         </div>
       </div>
-    </HashRouter>
+    </Router>
   );
 };
 
-App.propTypes = {
-
-};
+App.propTypes = {};
 
 export default App;
