@@ -1,9 +1,11 @@
 import { all, spawn, call } from 'redux-saga/effects';
 import { taskSagas } from './taskSagas';
+import { categorySagas } from './categorySagas';
 
 export default function* rootSaga() {
   const sagas = [
-    taskSagas
+    taskSagas,
+    categorySagas
   ];
 
   yield all(sagas.map(saga => spawn(function* () {
