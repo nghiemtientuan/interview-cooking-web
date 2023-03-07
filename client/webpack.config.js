@@ -15,6 +15,10 @@ module.exports = {
     },
     resolve: {
         extensions: ['.js', '.jsx'],
+        alias: {
+            Public: path.resolve(__dirname, 'public'),
+            Src: path.resolve(__dirname, 'src')
+        },
     },
     module: {
         rules: [
@@ -29,7 +33,6 @@ module.exports = {
                     loader: 'file-loader',
                     options: {
                         name: '[name].[ext]',
-                        outputPath: 'public/img/',
                     },
                 },
             },
@@ -60,7 +63,6 @@ module.exports = {
                 loader: 'file-loader',
                 options: {
                     name: 'public/fonts/[name].[ext]',
-                    outputPath: 'public/fonts',
                 },
             },
         ],

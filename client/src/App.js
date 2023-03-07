@@ -25,11 +25,7 @@ const App = () => {
 
   return (
     <Router>
-      <div className="container">
-        <div className="row">
-          { showContentMenu(routes) }
-        </div>
-      </div>
+      { showContentMenu(routes) }
     </Router>
   );
 };

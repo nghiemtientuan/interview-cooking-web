@@ -1,12 +1,15 @@
 import React from 'react';
 import { css } from '@emotion/react'
 
-// utils
-import { pathUrl } from "../../../routes/routes";
-import { app } from "../../../utils/app";
+import sidebar from 'Public/assets/img/sidebar.jpg';
 
+// utils
+import { pathUrl } from 'Src/routes/routes';
+
+
+// styles
 const sidebarStyle = css`
-  background: url('${app.sidebarImagePath}');
+  background: url('${sidebar}');
 `;
 
 const SlideComponent = () => {
@@ -24,7 +27,10 @@ const SlideComponent = () => {
               <p className="uk-text-secondary">
                 Appropriately integrate technically sound value with scalable infomediaries negotiate sustainable strategic theme areas
               </p>
-              <a className="uk-text-secondary uk-text-600 uk-text-small hvr-forward" href={pathUrl.user.SignUp}>Sign up today
+              <a
+                className="uk-text-secondary uk-text-600 uk-text-small hvr-forward"
+                href={pathUrl.user.SignUp}
+              >Sign up today
                 <span className="uk-margin-small-left" data-uk-icon="arrow-right"></span>
               </a>
             </div>
