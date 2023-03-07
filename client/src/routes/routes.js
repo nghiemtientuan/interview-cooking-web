@@ -1,12 +1,12 @@
 import React from 'react';
-//import HomePage from './../pages/HomePage/HomePage';
+import HomePage from './../pages/user/HomePage';
 
 const routes = [
-  // {
-  //   path: '/',
-  //   exact: true,
-  //   main:() => <HomePage />
-  // }
+  {
+    path: '/',
+    exact: true,
+    main:() => <HomePage />
+  }
 ];
 
 export default routes;

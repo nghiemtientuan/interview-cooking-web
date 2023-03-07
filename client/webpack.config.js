@@ -34,6 +34,7 @@ module.exports = {
             },
             {
                 test: /\.css$/i,
+                exclude: /public/,
                 use: ['style-loader', 'css-loader'],
             },
             {
