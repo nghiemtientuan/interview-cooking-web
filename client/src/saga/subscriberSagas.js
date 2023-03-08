@@ -2,7 +2,9 @@ import { call, put, takeLatest } from 'redux-saga/effects';
 
 import { callApi } from 'Src/utils/apiCaller';
 import * as Types from 'Src/constants/ActionTypes';
-import { fetchRecipesRequestSuccess } from 'Src/actions/recipeActions';
+
+// actions
+import { fetchRecipesRequestSuccess } from 'Src/actions/recipesActions';
 
 // utils
 import { HTTP_STATUS } from 'Src/constants/httpStatus';

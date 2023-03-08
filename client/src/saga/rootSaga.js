@@ -2,7 +2,7 @@ import { all, spawn, call } from 'redux-saga/effects';
 import { taskSagas } from './taskSagas';
 import { categorySagas } from './categorySagas';
 import { videoSagas } from './videoSagas';
-import { recipeSagas } from './recipeSagas';
+import { recipesSagas } from './recipesSagas';
 import { subscriberSagas } from './subscriberSagas';
 
 export default function* rootSaga() {
@@ -10,7 +10,7 @@ export default function* rootSaga() {
     taskSagas,
     categorySagas,
     videoSagas,
-    recipeSagas,
+    recipesSagas,
     subscriberSagas,
   ];
 

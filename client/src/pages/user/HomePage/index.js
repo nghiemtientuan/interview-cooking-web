@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch} from 'react-redux';
-import {fetchRecipesRequest} from 'Src/actions/recipeActions';
+
+// actions
+import {fetchRecipesRequest} from 'Src/actions/recipesActions';
 
 // components
 import HeaderComponent from 'Src/components/HeaderComponent';
