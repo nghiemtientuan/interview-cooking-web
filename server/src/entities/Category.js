@@ -5,7 +5,8 @@ import {
     CreateDateColumn,
     UpdateDateColumn,
     DeleteDateColumn,
-    BeforeInsert, BeforeUpdate
+    BeforeInsert, BeforeUpdate,
+    OneToMany, ManyToOne, JoinColumn
 } from 'typeorm';
 
 // utils
@@ -20,7 +21,7 @@ export class Category {
     name: string = '';
 
     @Column('int', {nullable: true})
-    parent_id: number = undefined;
+    parent_id: number = 0;
 
     @CreateDateColumn({
         type: 'timestamp',
@@ -50,4 +51,11 @@ export class Category {
     insertUpdated() {
         this.updated_at = new Date(nowDatetime());
     }
+
+    @OneToMany(() => Category, category => category.parentCategory)
+    childCategories: Category[];
+
+    @ManyToOne(() => Category, category => category.childCategories)
+    @JoinColumn({name: 'parent_id'})
+    parentCategory: Category;
 }
