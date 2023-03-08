@@ -13,7 +13,7 @@ export const RESPONSE_MESSAGE = {
 };
 
 export const responseFormat = (data, status = HTTP_STATUS.http_200, message = RESPONSE_MESSAGE.SUCCESS) => ({
-    status: status,
-    message: message,
+    status,
+    message,
     data: data
 });
