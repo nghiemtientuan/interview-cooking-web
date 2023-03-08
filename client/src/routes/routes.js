@@ -31,7 +31,7 @@ const routes = [
   {
     path: pathUrl.user.RecipePage + '/:id',
     exact: true,
-    main:() => <RecipePage />
+    main:(props) => <RecipePage {...props} />
   },
   {
     path: pathUrl.user.SignIn,

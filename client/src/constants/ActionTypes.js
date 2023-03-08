@@ -22,3 +22,7 @@ export const FETCH_RECIPES_SUCCESS = 'recipes/FETCH_RECIPES_SUCCESS';
 /* subscribers */
 export const POST_SUBSCRIBER = 'subscribers/POST_SUBSCRIBER';
 export const POST_SUBSCRIBER_SUCCESS = 'subscribers/POST_SUBSCRIBER_SUCCESS';
+
+/* Recipe */
+export const FETCH_SINGLE_RECIPE = 'recipes/FETCH_SINGLE_RECIPE';
+export const FETCH_SINGLE_RECIPE_SUCCESS = 'recipes/FETCH_SINGLE_RECIPE_SUCCESS';

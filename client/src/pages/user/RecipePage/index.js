@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import {useDispatch} from 'react-redux';
 
 // components
 import HeaderComponent from '../../../components/HeaderComponent';
@@ -11,7 +12,19 @@ import RecipeTagsListComponent from './RecipeTagsListComponent';
 import RecipeShareComponent from './RecipeShareComponent';
 import RecipeCommentsComponent from './RecipeCommentsListComponent';
 
-const RecipePage = () => {
+// actions
+import {fetchSingleRecipeRequest} from 'Src/actions/recipeActions';
+
+const RecipePage = (props) => {
+  const {params} = props.match;
+  const {id} = params;
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchSingleRecipeRequest(id));
+  }, []);
+
   return (
     <>
       <HeaderComponent />
