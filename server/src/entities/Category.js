@@ -13,32 +13,32 @@ import {nowDatetime} from '../utils/date';
 
 @Entity({name: 'categories'})
 export class Category {
-    @PrimaryGeneratedColumn()
-    id: number;
+    @PrimaryGeneratedColumn('int', { generated: true })
+    id: number = undefined;
 
     @Column('text', {nullable: true})
-    name: string;
+    name: string = '';
 
     @Column('int', {nullable: true})
-    parent_id: number;
+    parent_id: number = undefined;
 
     @CreateDateColumn({
         type: 'timestamp',
         nullable: true,
     })
-    created_at: Date;
+    created_at: Date = undefined;
 
     @UpdateDateColumn({
         type: 'timestamp',
         nullable: true,
     })
-    updated_at: Date;
+    updated_at: Date = undefined;
 
     @DeleteDateColumn({
         type: 'timestamp',
         nullable: true,
     })
-    deleted_at: Date;
+    deleted_at: Date = undefined;
 
     @BeforeInsert()
     insertCreated() {

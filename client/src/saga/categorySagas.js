@@ -15,8 +15,8 @@ export function* categorySagas() {
 function* onFetchCategories() {
   const result = yield call(getCategoriesApi);
 
-  if (result.status === HTTP_STATUS.http_200) {
-    const { data } = result;
+  if (result?.status === HTTP_STATUS.http_200) {
+    const { data } = result?.data;
     yield put(fetchCategoriesRequestSuccess(data));
 
     return;
@@ -26,6 +26,6 @@ function* onFetchCategories() {
 }
 
 // Call APIs
-const getCategoriesApi = () => callApi('categories')
+const getCategoriesApi = () => callApi('api/user/categories')
     .then(response => response)
     .catch(error => error.response);

@@ -9,22 +9,6 @@ import http from 'http';
 const debug = debugLib('server:server');
 require('dotenv').config();
 
-import cors from 'cors';
-const corsConfig = require('../config/cors');
-
-// setting cors
-const whitelist = corsConfig.CORS;
-const corsOptions = {
-  origin: function (origin, callback) {
-    if (origin === undefined || whitelist.indexOf(origin) !== -1) {
-      callback(null, true)
-    } else {
-      callback(new Error('Not allowed by CORS'))
-    }
-  }
-}
-app.use(cors(corsOptions));
-
 /**
  * Get port from environment and store in Express.
  */
