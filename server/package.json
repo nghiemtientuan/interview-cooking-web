@@ -14,7 +14,9 @@
     "test": "jest",
     "migrate:create": "typeorm migration:create",
     "migrate:up": "typeorm migration:run -d dist-server/config/database.js",
-    "migrate:down": "typeorm migration:revert -d dist-server/config/database.js"
+    "migrate:down": "typeorm migration:revert -d dist-server/config/database.js",
+    "seeder": "node ./dist-server/seeders/index.js",
+    "run:seeder": "npm-run-all build seeder"
   },
   "dependencies": {
     "@babel/cli": "^7.21.0",
