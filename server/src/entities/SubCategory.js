@@ -5,20 +5,23 @@ import {
     CreateDateColumn,
     UpdateDateColumn,
     DeleteDateColumn,
-    BeforeInsert, BeforeUpdate, OneToMany,
+    BeforeInsert, BeforeUpdate, ManyToOne, JoinColumn
 } from 'typeorm';
 
 // utils
 import {nowDatetime} from '../utils/date';
-import {SubCategory} from './SubCategory';
+import {Category} from './Category';
 
-@Entity({name: 'categories'})
-export class Category {
+@Entity({name: 'sub_categories'})
+export class SubCategory {
     @PrimaryGeneratedColumn()
     id: number = undefined;
 
     @Column('text', {nullable: true})
     name: string = '';
+
+    @Column('int', {nullable: true})
+    category_id: number = 0;
 
     @CreateDateColumn({
         type: 'timestamp',
@@ -49,6 +52,7 @@ export class Category {
         this.updated_at = new Date(nowDatetime());
     }
 
-    @OneToMany(() => SubCategory, subCategory => subCategory.parentCategory)
-    childCategories: SubCategory[] = undefined;
+    @ManyToOne(() => Category, category => category.childCategories)
+    @JoinColumn({name: 'category_id', referencedColumnName: 'id'})
+    parentCategory: Category = undefined;
 }
