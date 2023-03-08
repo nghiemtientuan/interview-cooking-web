@@ -12,15 +12,30 @@ import {
 import {nowDatetime} from '../utils/date';
 
 // entities
-import {SubCategory} from './SubCategory';
+import {RecipeComment} from './RecipeComment';
 
-@Entity({name: 'categories'})
-export class Category {
+@Entity({name: 'users'})
+export class User {
   @PrimaryGeneratedColumn()
   id: number = undefined;
 
+  @Column('text', {nullable: false})
+  email: string = '';
+
   @Column('text', {nullable: true})
-  name: string = '';
+  username: string = '';
+
+  @Column('text', {nullable: true})
+  fullname: string = '';
+
+  @Column('text', {nullable: true})
+  birthday: string = '';
+
+  @Column('text', {nullable: true})
+  password: string = '';
+
+  @Column('text', {nullable: true})
+  stripe_customer_id: string = '';
 
   @CreateDateColumn({
     type: 'timestamp',
@@ -51,6 +66,6 @@ export class Category {
     this.updated_at = new Date(nowDatetime());
   }
 
-  @OneToMany(() => SubCategory, subCategory => subCategory.parentCategory)
-  childCategories: SubCategory[] = undefined;
+  @OneToMany(() => RecipeComment, recipeComment => recipeComment.user)
+  recipeComments: RecipeComment[] = undefined;
 }

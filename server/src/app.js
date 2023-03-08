@@ -30,7 +30,6 @@ app.use(session({ secret: 'LightBlog', cookie: { maxAge: 60000 }, resave: false,
 const whitelist = corsConfig.CORS;
 const corsOptions = {
     origin: function (origin, callback) {
-        console.log(whitelist, origin, whitelist.indexOf(origin))
         if (origin === undefined || whitelist.indexOf(origin) !== -1) {
             callback(null, true)
         } else {

@@ -5,22 +5,22 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   DeleteDateColumn,
-  BeforeInsert, BeforeUpdate, OneToMany,
+  BeforeInsert, BeforeUpdate,
 } from 'typeorm';
 
 // utils
 import {nowDatetime} from '../utils/date';
 
-// entities
-import {SubCategory} from './SubCategory';
-
-@Entity({name: 'categories'})
-export class Category {
+@Entity({name: 'configurations'})
+export class Configuration {
   @PrimaryGeneratedColumn()
   id: number = undefined;
 
   @Column('text', {nullable: true})
-  name: string = '';
+  key: string = '';
+
+  @Column('text', {nullable: true})
+  value: string = '';
 
   @CreateDateColumn({
     type: 'timestamp',
@@ -50,7 +50,4 @@ export class Category {
   insertUpdated() {
     this.updated_at = new Date(nowDatetime());
   }
-
-  @OneToMany(() => SubCategory, subCategory => subCategory.parentCategory)
-  childCategories: SubCategory[] = undefined;
 }

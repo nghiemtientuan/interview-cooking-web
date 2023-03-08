@@ -5,22 +5,40 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   DeleteDateColumn,
-  BeforeInsert, BeforeUpdate, OneToMany,
+  BeforeInsert, BeforeUpdate, ManyToOne, JoinColumn,
 } from 'typeorm';
 
 // utils
 import {nowDatetime} from '../utils/date';
 
 // entities
-import {SubCategory} from './SubCategory';
+import {Role} from './Role';
 
-@Entity({name: 'categories'})
-export class Category {
+@Entity({name: 'staffs'})
+export class Staff {
   @PrimaryGeneratedColumn()
   id: number = undefined;
 
+  @Column('text', {nullable: false})
+  email: string = '';
+
   @Column('text', {nullable: true})
-  name: string = '';
+  username: string = '';
+
+  @Column('text', {nullable: true})
+  fullname: string = '';
+
+  @Column('text', {nullable: true})
+  password: string = '';
+
+  @Column('text', {nullable: true})
+  birthday: string = '';
+
+  @Column('text', {nullable: true})
+  image: string = '';
+
+  @Column('int', {nullable: true})
+  role_id: number = 0;
 
   @CreateDateColumn({
     type: 'timestamp',
@@ -51,6 +69,7 @@ export class Category {
     this.updated_at = new Date(nowDatetime());
   }
 
-  @OneToMany(() => SubCategory, subCategory => subCategory.parentCategory)
-  childCategories: SubCategory[] = undefined;
+  @ManyToOne(() => Role, role => role.staffs)
+  @JoinColumn({name: 'role_id', referencedColumnName: 'id'})
+  role: Role = undefined;
 }

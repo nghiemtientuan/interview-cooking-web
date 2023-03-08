@@ -5,22 +5,25 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   DeleteDateColumn,
-  BeforeInsert, BeforeUpdate, OneToMany,
+  BeforeInsert, BeforeUpdate, ManyToMany, JoinTable,
 } from 'typeorm';
 
 // utils
 import {nowDatetime} from '../utils/date';
 
 // entities
-import {SubCategory} from './SubCategory';
+import {Role} from './Role';
 
-@Entity({name: 'categories'})
-export class Category {
+@Entity({name: 'permissions'})
+export class Permission {
   @PrimaryGeneratedColumn()
   id: number = undefined;
 
   @Column('text', {nullable: true})
   name: string = '';
+
+  @Column('text', {nullable: true})
+  slug: string = '';
 
   @CreateDateColumn({
     type: 'timestamp',
@@ -51,6 +54,17 @@ export class Category {
     this.updated_at = new Date(nowDatetime());
   }
 
-  @OneToMany(() => SubCategory, subCategory => subCategory.parentCategory)
-  childCategories: SubCategory[] = undefined;
+  @ManyToMany(() => Role, role => role.permissions)
+  @JoinTable({
+    name: 'role_permissions',
+    joinColumn: {
+      name: 'role_id',
+      referencedColumnName: 'id',
+    },
+    inverseJoinColumn: {
+      name: 'permission_id',
+      referencedColumnName: 'id',
+    },
+  })
+  roles: Role[] = undefined
 }
