@@ -38,7 +38,7 @@ const VideosComponent = () => {
                     </div>
 
                     <div className="uk-position-small uk-position-bottom-left">
-                      <h5 className="uk-margin-small-bottom">Business Presentation Course</h5>
+                      <h5 className="uk-margin-small-bottom">{video?.title}</h5>
                     </div>
                   </div>
 

@@ -2,22 +2,22 @@ import { call, put, takeLatest } from 'redux-saga/effects';
 
 import { callApi } from 'Src/utils/apiCaller';
 import * as Types from 'Src/constants/ActionTypes';
-import { fetchVideosRequestSuccess } from 'Src/actions/videoActions';
+import { fetchRecipesRequestSuccess } from 'Src/actions/recipeActions';
 
 // utils
 import { HTTP_STATUS } from 'Src/constants/httpStatus';
 
 // Sagas
-export function* videoSagas() {
-  yield takeLatest(Types.FETCH_VIDEOS, onFetchVideos);
+export function* recipeSagas() {
+  yield takeLatest(Types.FETCH_RECIPES, onFetchRecipes);
 }
 
-function* onFetchVideos() {
-  const result = yield call(getVideosApi);
+function* onFetchRecipes(action) {
+  const result = yield call(getRecipesApi, action.filter);
 
   if (result.status === HTTP_STATUS.http_200) {
     const { data } = result;
-    yield put(fetchVideosRequestSuccess(data));
+    yield put(fetchRecipesRequestSuccess(data));
 
     return;
   }
@@ -26,6 +26,6 @@ function* onFetchVideos() {
 }
 
 // Call APIs
-const getVideosApi = () => callApi('api/user/videos')
+const getRecipesApi = (filter) => callApi('api/user/recipes', 'GET', filter)
     .then(response => response)
     .catch(error => error.response);

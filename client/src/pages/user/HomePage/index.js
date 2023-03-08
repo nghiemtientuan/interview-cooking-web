@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { addTaskRequest, fetchTasksRequest, deleteTaskRequest } from 'Src/actions/taskActions';
+import React, {useEffect, useState} from 'react';
+import {useDispatch} from 'react-redux';
+import {fetchRecipesRequest} from 'Src/actions/recipeActions';
 
 // components
 import HeaderComponent from 'Src/components/HeaderComponent';
@@ -12,35 +12,16 @@ import CategoriesListComponent from './CategoriesListComponent';
 import SearchResultComponent from './SearchResultComponent';
 
 const HomePage = (_props) => {
-  const tasks = useSelector((state) => state.tasks);
   const dispatch = useDispatch();
 
+  const [filter, setFilter] = useState({
+    keyword: '',
+    subCategory: null,
+  });
+
   useEffect(() => {
-    dispatch(fetchTasksRequest());
+    dispatch(fetchRecipesRequest(filter));
   }, []);
-
-  const handleAddTask = () => {
-    const newTask = {
-      ...selectedTask,
-      id: Date.now()
-    };
-
-    dispatch(addTaskRequest(newTask));
-
-    setSelectedTask(null);
-  };
-
-  const handleRemoveTask = (taskId) => {
-    dispatch(deleteTaskRequest(taskId));
-  };
-
-  const handleChange = (e) => {
-    const {target} = e;
-    const {name, value} = target;
-    setSelectedTask({
-      [name]: value
-    });
-  };
 
   return (
     <>
@@ -50,9 +31,9 @@ const HomePage = (_props) => {
       <div className="uk-section uk-section-default">
         <div className="uk-container">
           <div data-uk-grid>
-            <CategoriesListComponent />
+            <CategoriesListComponent setFilter={setFilter}/>
 
-            <SearchResultComponent />
+            <SearchResultComponent setFilter={setFilter}/>
           </div>
         </div>
       </div>
