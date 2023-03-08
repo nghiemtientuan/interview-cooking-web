@@ -27,4 +27,19 @@ export const RecipeRepository = dataConnection.getRepository(Recipe).extend({
 
         return [result, total, page, take];
     },
+
+    findRecipe(id) {
+        return this.findOne({
+            where: {
+                id: id,
+            },
+            relations: [
+                'recipeIngredients',
+                'recipeSteps',
+                'recipeTags',
+                'recipeComments.user',
+                'subCategory',
+            ],
+        });
+    }
 });
