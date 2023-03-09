@@ -28,6 +28,19 @@ function* onFetchRecipes(action) {
 }
 
 // Call APIs
-const getRecipesApi = (filter) => callApi('api/user/recipes', 'GET', filter)
+const getRecipesApi = (filter) => {
+  let endPoint = 'api/user/recipes';
+  if (filter?.keyword || filter?.subCategory) {
+    endPoint += '?';
+    if (filter?.keyword) {
+      endPoint += `keyword=${filter?.keyword}&`;
+    }
+    if (filter?.subCategory) {
+      endPoint += `subCategory=${filter?.subCategory}`;
+    }
+  }
+
+  return callApi(endPoint)
     .then(response => response)
     .catch(error => error.response);
+}

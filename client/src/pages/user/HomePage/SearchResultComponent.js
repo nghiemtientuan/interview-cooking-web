@@ -10,11 +10,11 @@ import {pathUrl} from 'Src/routes/routes';
 
 const SearchResultComponent = (props) => {
   const recipes = useSelector((state) => state.recipes);
-  const {setFilter} = props;
+  const {filter, setFilter, handleSearch} = props;
 
   return (
     <div className="uk-width-expand@m">
-      <FilterComponent setFilter={setFilter}/>
+      <FilterComponent filter={filter} setFilter={setFilter} handleSearch={handleSearch}/>
 
       <div className="uk-child-width-1-2 uk-child-width-1-3@s" data-uk-grid>
         {

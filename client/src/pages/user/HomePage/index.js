@@ -25,6 +25,10 @@ const HomePage = (_props) => {
     dispatch(fetchRecipesRequest(filter));
   }, []);
 
+  const handleSearch = () => {
+    dispatch(fetchRecipesRequest(filter));
+  }
+
   return (
     <>
       <HeaderComponent />
@@ -35,7 +39,7 @@ const HomePage = (_props) => {
           <div data-uk-grid>
             <CategoriesListComponent setFilter={setFilter}/>
 
-            <SearchResultComponent setFilter={setFilter}/>
+            <SearchResultComponent filter={filter} setFilter={setFilter} handleSearch={handleSearch}/>
           </div>
         </div>
       </div>

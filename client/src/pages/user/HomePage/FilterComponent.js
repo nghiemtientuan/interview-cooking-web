@@ -1,6 +1,18 @@
 import React from 'react';
 
-const FilterComponent = () => {
+const FilterComponent = (props) => {
+  const {filter, setFilter, handleSearch} = props;
+
+  const onChange = (e) => {
+    const {target} = e;
+    const {value} = target;
+
+    setFilter({
+      ...filter,
+      keyword: value,
+    })
+  };
+
   return (
     <div data-uk-grid>
       <div className="uk-width-expand@m">
@@ -10,16 +22,16 @@ const FilterComponent = () => {
             className="uk-search-input uk-text-small uk-border-rounded uk-form-large"
             type="search"
             placeholder="Search for recipes..."
+            onChange={onChange}
           />
         </form>
       </div>
 
       <div className="uk-width-1-3@m uk-text-right@m uk-light">
-        <select className="uk-select uk-select-light uk-width-auto uk-border-pill uk-select-primary">
-          <option>Sort by: Latest</option>
-          <option>Sort by: Top Rated</option>
-          <option>Sort by: Trending</option>
-        </select>
+        <button
+          className="uk-select uk-select-light uk-width-auto uk-border-pill uk-select-primary"
+          onClick={handleSearch}
+        >search</button>
       </div>
     </div>
   );
