@@ -17,7 +17,7 @@ function* onFetchVideos() {
 
   if (result.status === HTTP_STATUS.http_200) {
     const { data } = result;
-    yield put(fetchVideosRequestSuccess(data));
+    yield put(fetchVideosRequestSuccess(data.data));
 
     return;
   }

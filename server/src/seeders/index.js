@@ -2,6 +2,7 @@ import {dataConnection} from '../config/database';
 
 import {categorySeeder} from './categorySeeder';
 import {recipeSeeder} from './recipeSeeder';
+import {videoSeeder} from './videoSeeder';
 
 const init = async () => {
   await dataConnection.initialize();
@@ -9,6 +10,7 @@ const init = async () => {
   // seeders
   await categorySeeder();
   await recipeSeeder();
+  await videoSeeder();
 };
 
 init().then(() => {
