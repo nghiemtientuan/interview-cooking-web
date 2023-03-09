@@ -4,7 +4,7 @@ import { callApi } from 'Src/utils/apiCaller';
 import * as Types from 'Src/constants/ActionTypes';
 
 // actions
-import { fetchRecipesRequestSuccess } from 'Src/actions/recipesActions';
+import { postSubscriberRequestSuccess } from 'Src/actions/subscriberActions';
 
 // utils
 import { HTTP_STATUS } from 'Src/constants/httpStatus';
@@ -18,8 +18,7 @@ function* onPostSubscriber(action) {
   const result = yield call(postSubscriberApi, action.email);
 
   if (result.status === HTTP_STATUS.http_200) {
-    const { data } = result;
-    yield put(fetchRecipesRequestSuccess(data));
+    yield put(postSubscriberRequestSuccess());
 
     return;
   }
