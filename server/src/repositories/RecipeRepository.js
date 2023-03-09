@@ -11,12 +11,16 @@ export const RecipeRepository = dataConnection.getRepository(Recipe).extend({
         const skip = (page - 1) * take ;
 
         let query = this.createQueryBuilder('recipe');
-        if (queryParam?.keyword) {
-            query.where('recipe.title LIKE :value', {value: `%${queryParam?.keyword}%`});
-        }
-        if (queryParam?.subCategory) {
-            query.leftJoin('recipe.subCategory', 'subCategory');
-            query.where('subCategory.id = :value', {value: queryParam?.subCategory});
+        if (queryParam?.keyword && queryParam?.subCategory) {
+            query.where('recipe.sub_category_id = :value', {value: queryParam?.subCategory});
+            query.andWhere('recipe.title LIKE :value', {value: `%${queryParam?.keyword}%`});
+        } else {
+            if (queryParam?.keyword) {
+                query.where('recipe.title LIKE :value', {value: `%${queryParam?.keyword}%`});
+            }
+            if (queryParam?.subCategory) {
+                query.where('recipe.sub_category_id = :value', {value: queryParam?.subCategory});
+            }
         }
         query.orderBy('recipe.created_at', 'DESC')
         query.take(take)
