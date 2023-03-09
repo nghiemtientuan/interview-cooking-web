@@ -23,6 +23,7 @@ const FilterComponent = (props) => {
             type="search"
             placeholder="Search for recipes..."
             onChange={onChange}
+            value={filter.keyword}
           />
         </form>
       </div>
@@ -30,7 +31,7 @@ const FilterComponent = (props) => {
       <div className="uk-width-1-3@m uk-text-right@m uk-light">
         <button
           className="uk-select uk-select-light uk-width-auto uk-border-pill uk-select-primary"
-          onClick={handleSearch}
+          onClick={() => handleSearch()}
         >search</button>
       </div>
     </div>
