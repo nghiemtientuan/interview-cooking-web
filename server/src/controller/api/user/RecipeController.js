@@ -1,0 +1,26 @@
+// utils
+import {paginateResponse} from '../../../utils/paginateResponse';
+import {responseFormat} from '../../../utils/responseFormat';
+import {response404} from '../../../utils/response404';
+
+// repositories
+import {RecipeRepository} from '../../../repositories/RecipeRepository';
+
+export const index = async (req, res, next) => {
+    const query = req.query;
+    const result = await RecipeRepository.getRecipes(query);
+
+    return res.json(paginateResponse(result));
+};
+
+export const show = async (req, res, next) => {
+    const query = req.params;
+    const {id} = query;
+    const result = await RecipeRepository.findRecipe(id);
+
+    if (result) {
+        return res.json(responseFormat(result));
+    }
+
+    return response404(res);
+};
