@@ -25,6 +25,9 @@ export class RecipeIngredient {
   @Column('int', {nullable: true})
   quantity: number = 0;
 
+  @Column('text', {nullable: true})
+  unit: string = '';
+
   @Column('int', {nullable: true})
   recipe_id: number = 0;
 

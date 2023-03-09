@@ -1,11 +1,14 @@
-import {categorySeeder} from './categorySeeder';
 import {dataConnection} from '../config/database';
+
+import {categorySeeder} from './categorySeeder';
+import {recipeSeeder} from './recipeSeeder';
 
 const init = async () => {
   await dataConnection.initialize();
 
   // seeders
   await categorySeeder();
+  await recipeSeeder();
 };
 
 init().then(() => {
