@@ -10,7 +10,7 @@ const RecipeIngredientsListComponent = () => {
       <ul className="uk-list uk-list-large uk-list-divider uk-margin-medium-top">
         {
           recipe?.recipeIngredients?.map((ingredient, ingredientIndex) => (
-            <li key={ingredientIndex}>{ingredient.name} {ingredient.unit}</li>
+            <li key={ingredientIndex}>{ingredient?.name}: {ingredient?.quantity} {ingredient?.unit}</li>
           ))
         }
       </ul>
