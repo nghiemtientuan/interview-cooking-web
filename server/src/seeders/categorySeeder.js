@@ -1,10 +1,10 @@
 import {Category} from '../entities/Category';
 import {dataConnection} from '../config/database';
-import {SubCategory} from "../entities/SubCategory";
+import {SubCategory} from '../entities/SubCategory';
 
 const categories = [
   {
-    name: "Món chính",
+    name: 'Món chính',
     sub: [
       'Cơm',
       'Gà',
@@ -14,7 +14,7 @@ const categories = [
     ],
   },
   {
-    name: "Món Phụ",
+    name: 'Món Phụ',
     sub: [
       'Ăn vặt',
       'Ăn sáng',
@@ -22,14 +22,14 @@ const categories = [
     ],
   },
   {
-    name: "Nhanh - dễ",
+    name: 'Nhanh - dễ',
     sub: [
       'Bún',
       'Phở',
     ],
   },
   {
-    name: "Lẩu",
+    name: 'Lẩu',
     sub: [
       'Lẩu gà',
       'Lẩu vịt',
