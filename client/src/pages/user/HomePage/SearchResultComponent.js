@@ -55,7 +55,7 @@ const SearchResultComponent = (props) => {
                       <span className="uk-margin-xsmall-left">5/5</span>
                     </div>
 
-                    <div className="uk-width-expand uk-text-right">by John Keller</div>
+                    <div className="uk-width-expand uk-text-right">by Tuntun</div>
                   </div>
                 </div>
 

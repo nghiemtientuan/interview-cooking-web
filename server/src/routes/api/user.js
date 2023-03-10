@@ -16,6 +16,7 @@ router.get('/videos', VideoController.index);
 /* GET recipes */
 router.get('/recipes', RecipeController.index);
 router.get('/recipes/:id', RecipeController.show);
+router.get('/recipes/:id/relations', RecipeController.getRelationRecipes);
 
 /* subscribers */
 router.post('/subscribers', SubscriberController.saveSubscriber);

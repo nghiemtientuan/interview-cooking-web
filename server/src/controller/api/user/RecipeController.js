@@ -24,3 +24,12 @@ export const show = async (req, res, next) => {
 
     return response404(res);
 };
+
+export const getRelationRecipes = async (req, res, next) => {
+    const query = req.params;
+    const {id} = query;
+    const result = await RecipeRepository.getRelationRecipes(id);
+    console.log(result)
+
+    return res.json(responseFormat(result));
+};

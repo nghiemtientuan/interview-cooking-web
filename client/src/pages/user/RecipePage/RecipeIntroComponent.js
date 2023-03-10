@@ -46,7 +46,7 @@ const RecipeIntroComponent = () => {
             <div data-uk-grid>
               <div className="uk-width-auto@s uk-text-small">
                 <p className="uk-margin-small-top uk-margin-remove-bottom">
-                  Created by Alex Williamns
+                  Created by Tuntun
                 </p>
                 <span className="uk-text-muted">21 recipes</span>
               </div>

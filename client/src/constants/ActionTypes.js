@@ -15,6 +15,8 @@ export const FETCH_VIDEOS_SUCCESS = 'videos/FETCH_VIDEOS_SUCCESS';
 /* Recipes */
 export const FETCH_RECIPES = 'recipes/FETCH_RECIPES';
 export const FETCH_RECIPES_SUCCESS = 'recipes/FETCH_RECIPES_SUCCESS';
+export const FETCH_RELATION_RECIPES = 'recipes/FETCH_RELATION_RECIPES';
+export const FETCH_RELATION_RECIPES_SUCCESS = 'recipes/FETCH_RELATION_RECIPES_SUCCESS';
 
 /* subscribers */
 export const POST_SUBSCRIBER = 'subscribers/POST_SUBSCRIBER';

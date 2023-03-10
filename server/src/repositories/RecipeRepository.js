@@ -1,3 +1,5 @@
+import {Not} from 'typeorm';
+
 // config
 import {dataConnection} from '../config/database';
 
@@ -45,5 +47,13 @@ export const RecipeRepository = dataConnection.getRepository(Recipe).extend({
                 'subCategory',
             ],
         });
+    },
+
+    getRelationRecipes(id) {
+        return this.createQueryBuilder('recipe')
+          .where(`recipe.id != ${id}`)
+          .orderBy('RAND()')
+          .take(4)
+          .getMany();
     }
 });

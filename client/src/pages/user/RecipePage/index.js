@@ -55,7 +55,7 @@ const RecipePage = (props) => {
         </div>
       </div>
 
-      <RelationRecipeComponent />
+      <RelationRecipeComponent recipeId={id}/>
 
       <FooterComponent />
     </>
