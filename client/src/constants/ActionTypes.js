@@ -4,9 +4,6 @@ export const FETCH_TASKS_SUCCESS = 'tasks/FETCH_TASKS_SUCCESS';
 export const ADD_TASK = 'tasks/ADD_TASK';
 export const ADD_TASK_SUCCESS = 'tasks/ADD_TASK_SUCCESS';
 
-export const DELETE_TASK = 'tasks/DELETE_TASK';
-export const DELETE_TASK_SUCCESS = 'tasks/DELETE_TASK_SUCCESS';
-
 /* Categories */
 export const FETCH_CATEGORIES = 'categories/FETCH_CATEGORIES';
 export const FETCH_CATEGORIES_SUCCESS = 'categories/FETCH_CATEGORIES_SUCCESS';
@@ -21,7 +18,6 @@ export const FETCH_RECIPES_SUCCESS = 'recipes/FETCH_RECIPES_SUCCESS';
 
 /* subscribers */
 export const POST_SUBSCRIBER = 'subscribers/POST_SUBSCRIBER';
-export const POST_SUBSCRIBER_SUCCESS = 'subscribers/POST_SUBSCRIBER_SUCCESS';
 
 /* Recipe */
 export const FETCH_SINGLE_RECIPE = 'recipes/FETCH_SINGLE_RECIPE';

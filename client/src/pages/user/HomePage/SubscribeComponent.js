@@ -16,7 +16,7 @@ const SubscribeComponent = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    dispatch(postSubscriberRequest(email));
+    dispatch(postSubscriberRequest(email, () => setEmail('')));
   }
 
   return (

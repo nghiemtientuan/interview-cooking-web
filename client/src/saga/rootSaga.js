@@ -1,5 +1,4 @@
 import { all, spawn, call } from 'redux-saga/effects';
-import { taskSagas } from './taskSagas';
 import { categorySagas } from './categorySagas';
 import { videoSagas } from './videoSagas';
 import { recipesSagas } from './recipesSagas';
@@ -8,7 +7,6 @@ import { recipeSagas } from './recipeSagas';
 
 export default function* rootSaga() {
   const sagas = [
-    taskSagas,
     categorySagas,
     videoSagas,
     recipesSagas,

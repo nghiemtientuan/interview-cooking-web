@@ -8,7 +8,8 @@ import { fetchRecipesRequestSuccess } from 'Src/actions/recipesActions';
 
 // utils
 import { HTTP_STATUS } from 'Src/constants/httpStatus';
-import {object} from "prop-types";
+import {object} from 'prop-types';
+import {handleApiCallerError} from 'Src/utils/handleApiCallerError';
 
 // Sagas
 export function* recipesSagas() {
@@ -25,6 +26,7 @@ function* onFetchRecipes(action) {
     return;
   }
 
+  handleApiCallerError(result);
   console.error('[ERROR] onFetchVideos error')
 }
 
