@@ -4714,7 +4714,9 @@ ul.uk-nav-sub {
 
 /* Active */
 .uk-pagination > .uk-active > * {
-  color: #4a4a4a;
+  /*color: #4a4a4a;*/
+  color: #EB4A37 !important;
+  text-decoration: underline !important;
 }
 
 /* Disabled */

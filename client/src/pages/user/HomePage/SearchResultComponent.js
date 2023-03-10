@@ -11,6 +11,14 @@ import {pathUrl} from 'Src/routes/routes';
 const SearchResultComponent = (props) => {
   const recipes = useSelector((state) => state.recipes);
   const {filter, setFilter, handleSearch} = props;
+  const onPageChange = (page) => {
+    const newFilter = {
+      ...filter,
+      page
+    };
+    setFilter(newFilter);
+    handleSearch(newFilter);
+  }
 
   return (
     <div className="uk-width-expand@m">
@@ -58,7 +66,11 @@ const SearchResultComponent = (props) => {
         }
       </div>
 
-      <PaginationComponent/>
+      <PaginationComponent
+        currentPage={recipes?.currentPage || 1}
+        totalPage={recipes?.lastPage || 1}
+        onPageChange={onPageChange}
+      />
     </div>
   );
 };

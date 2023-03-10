@@ -8,6 +8,7 @@ import { fetchRecipesRequestSuccess } from 'Src/actions/recipesActions';
 
 // utils
 import { HTTP_STATUS } from 'Src/constants/httpStatus';
+import {object} from "prop-types";
 
 // Sagas
 export function* recipesSagas() {
@@ -30,14 +31,12 @@ function* onFetchRecipes(action) {
 // Call APIs
 const getRecipesApi = (filter) => {
   let endPoint = 'api/user/recipes';
-  if (filter?.keyword || filter?.subCategory) {
-    endPoint += '?';
-    if (filter?.keyword) {
-      endPoint += `keyword=${filter?.keyword}&`;
-    }
-    if (filter?.subCategory) {
-      endPoint += `subCategory=${filter?.subCategory}`;
-    }
+  const params = Object.keys(filter)
+    .map(key => filter[key] ? `${key}=${filter[key]}` : '')
+    .filter(n => n)
+    .join('&');
+  if (params) {
+    endPoint += `?${params}`;
   }
 
   return callApi(endPoint)
