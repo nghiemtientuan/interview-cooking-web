@@ -3,6 +3,9 @@ This project is for interview-cooking-web
 
 # 1. Requirement
 NodeJs v16
+```
+nvm use 16
+```
 
 # 2. Build local
 - Server

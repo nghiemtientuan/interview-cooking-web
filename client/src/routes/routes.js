@@ -21,31 +21,31 @@ const routes = [
   {
     path: pathUrl.user.HomePage,
     exact: true,
-    main:() => <HomePage />
+    main: <HomePage />
   },
   {
     path: pathUrl.user.ContactPage,
     exact: true,
-    main:() => <ContactPage />
+    main: <ContactPage />
   },
   {
     path: pathUrl.user.RecipePage + '/:id',
     exact: true,
-    main:(props) => <RecipePage {...props} />
+    main: <RecipePage />
   },
   {
     path: pathUrl.user.SignIn,
     exact: true,
-    main:() => <SignIn />
+    main: <SignIn />
   },
   {
     path: pathUrl.user.SignUp,
     exact: true,
-    main:() => <SignUp />
+    main: <SignUp />
   },
   {
     path: '*',
-    main:() => <NotFound />
+    main: <NotFound />
   },
 ];
 

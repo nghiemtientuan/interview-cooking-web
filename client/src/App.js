@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import './App.css';
 import routes from './routes/routes';
@@ -14,19 +14,21 @@ const App = () => {
             key={index}
             path={route.path}
             exact={route.exact}
-            component={route.main}
+            element={route.main}
           />
         )
       });
     }
 
-    return <Switch>{result}</Switch>
+    return result
   };
 
   return (
     <Router>
+    <Routes>
       { showContentMenu(routes) }
-    </Router>
+    </Routes>
+</Router>
   );
 };
 
