@@ -1,7 +1,11 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {css} from '@emotion/react';
 import {createUserWithEmailAndPassword} from 'firebase/auth';
 import {useNavigate} from 'react-router-dom';
+import {toast} from 'react-toastify';
+import {useForm} from 'react-hook-form';
+import * as yup from 'yup';
+import {yupResolver} from '@hookform/resolvers/yup';
 
 import {pathUrl} from 'Src/routes/routes';
 import {app} from 'Src/utils/app';
@@ -19,33 +23,37 @@ const signUpImageStyle = css`
 const SignUp = () => {
   const navigate = useNavigate();
 
-  // local states
-  const [user, setUser] = useState({
-    email: '',
-    password: '',
-    confirm_password: '',
+  // validate
+  const schema = yup.object().shape({
+    email: yup
+      .string()
+      .email("Vui lòng nhập đúng định dạng email.")
+      .required("Vui lòng nhập email."),
+    password: yup
+      .string()
+      .required('Vui lòng nhập pasword'),
+    confirm_password: yup
+      .string()
+      .oneOf([yup.ref('password')], 'Mật khẩu không trùng khớp'),
   });
 
-  const onInputChange = (e) => {
-    const {target} = e;
-    const {name, value} = target;
-    setUser({
-      ...user,
-      [name]: value
-    })
-  };
+  // local states
+  const {register, handleSubmit, formState: {errors}} = useForm({
+    resolver: yupResolver(schema),
+  });
 
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    const {email, password, confirm_password} = user;
+  const onSubmit = async (data) => {
+    const {email, password, confirm_password} = data;
     if (password !== confirm_password) {
       return;
     }
     try {
       await createUserWithEmailAndPassword(auth, email, password);
+      toast.error('Register success!');
       navigate(pathUrl.user.HomePage)
     } catch (error) {
-      console.log('[Auth] register error: ', error);
+      toast.error('Register success!');
+      console.error('[Auth] register error: ', error);
     }
   };
 
@@ -89,9 +97,9 @@ const SignUp = () => {
                 type='email'
                 placeholder='tom@company.com'
                 name='email'
-                value={user.email}
-                onChange={onInputChange}
+                {...register('email')}
               />
+              {errors?.email && <span className='uk-form-danger'>{errors.email.message}</span>}
             </div>
 
             <div className='uk-width-1-1 uk-margin'>
@@ -102,9 +110,9 @@ const SignUp = () => {
                 type='password'
                 placeholder='Min 8 characters'
                 name='password'
-                value={user.password}
-                onChange={onInputChange}
+                {...register('password')}
               />
+              {errors?.password && <span className='uk-form-danger'>{errors.password.message}</span>}
             </div>
 
             <div className='uk-width-1-1 uk-margin'>
@@ -115,15 +123,15 @@ const SignUp = () => {
                 type='password'
                 placeholder='Min 8 characters'
                 name='confirm_password'
-                value={user.confirm_password}
-                onChange={onInputChange}
+                {...register('confirm_password')}
               />
+              {errors?.confirm_password && <span className='uk-form-danger'>{errors.confirm_password.message}</span>}
             </div>
 
             <div className='uk-width-1-1 uk-text-center'>
               <button
                 className='uk-button uk-button-primary uk-button-large'
-                onClick={onSubmit}
+                onClick={handleSubmit(onSubmit)}
               >Sign Up
               </button>
             </div>
