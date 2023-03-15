@@ -13,6 +13,8 @@ nvm use 16
 npm install
 npm run dev
 npm run watch
+
+npm run run:seeder
 ```
 
 - Client
