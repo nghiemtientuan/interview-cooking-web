@@ -6,6 +6,10 @@ import * as CategoryController from '../../controller/api/user/CategoryControlle
 import * as VideoController from '../../controller/api/user/VideoController';
 import * as RecipeController from '../../controller/api/user/RecipeController';
 import * as SubscriberController from '../../controller/api/user/SubscriberController';
+import * as UserController from '../../controller/api/user/UserController';
+
+/* GET user */
+router.get('/', UserController.getUser);
 
 /* GET categories */
 router.get('/categories', CategoryController.index);
