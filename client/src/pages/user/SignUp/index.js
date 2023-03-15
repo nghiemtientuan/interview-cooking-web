@@ -49,11 +49,16 @@ const SignUp = () => {
     }
     try {
       await createUserWithEmailAndPassword(auth, email, password);
-      toast.error('Register success!');
+      toast.success('Register success!');
       navigate(pathUrl.user.HomePage)
     } catch (error) {
-      toast.error('Register success!');
-      console.error('[Auth] register error: ', error);
+      const {code, message} = error;
+      if (code === 'auth/email-already-in-use') {
+        toast.error('Email đã được sử dụng!');
+      } else {
+        toast.error(message);
+        console.error('[Auth] Register error: ', error);
+      }
     }
   };
 

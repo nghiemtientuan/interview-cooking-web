@@ -4,6 +4,7 @@ import videos from './videos';
 import recipes from './recipes';
 import relationRecipes from './relationRecipes';
 import recipe from './recipe';
+import auth from './auth';
 
 const rootReducer = combineReducers({
   categories,
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   recipes,
   relationRecipes,
   recipe,
+  auth,
 });
 
 export default rootReducer;

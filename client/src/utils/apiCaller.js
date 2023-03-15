@@ -1,10 +1,34 @@
-import axios from'axios';
-import * as Config from './../constants/Config';
+import axios from 'axios';
+import {onAuthStateChanged} from 'firebase/auth';
 
-export const callApi = (endpoint, method='GET', body) => {
+// config
+import * as Config from 'Src/constants/Config';
+
+// auth
+import {auth} from 'Src/auth';
+
+export const callApi = async (endpoint, method = 'GET', body) => {
   return axios({
     method: method,
     url: Config.API_URL + "/" + endpoint,
-    data: body
+    data: body,
+    headers: {
+      Authorization: `Bearer ${await getUserToken()}`,
+    },
   });
 };
+
+const getUserToken = async () => {
+  return new Promise((resolve, reject) => {
+    const unsub = onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        const token = await user.getIdToken();
+        resolve(token)
+      } else {
+        resolve(null)
+      }
+
+      unsub();
+    });
+  })
+}

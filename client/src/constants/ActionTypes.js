@@ -24,3 +24,8 @@ export const POST_SUBSCRIBER = 'subscribers/POST_SUBSCRIBER';
 /* Recipe */
 export const FETCH_SINGLE_RECIPE = 'recipes/FETCH_SINGLE_RECIPE';
 export const FETCH_SINGLE_RECIPE_SUCCESS = 'recipes/FETCH_SINGLE_RECIPE_SUCCESS';
+
+/* user login */
+export const FETCH_USER = 'user/FETCH_USER';
+export const FETCH_USER_SUCCESS = 'user/FETCH_USER_SUCCESS';
+export const REGISTER_USER = 'user/REGISTER_USER';
