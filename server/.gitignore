@@ -107,3 +107,4 @@ dist
 .idea
 
 dist-server
+src/auth/credentials.json
