@@ -19,9 +19,13 @@ export const userLoginMiddleware = async (request, response, next) => {
 
       request.userFirebase = userFirebase;
       next();
+
+      return;
     } catch (error) {
       console.error('[Middleware] Error: ' + error)
       next();
+
+      return;
     }
   }
 
