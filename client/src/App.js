@@ -20,6 +20,7 @@ import RecipePage from 'Src/pages/user/RecipePage';
 import SignIn from 'Src/pages/user/SignIn';
 import SignUp from 'Src/pages/user/SignUp';
 import NotFound from 'Src/pages/NotFound';
+import UserPage from 'Src/pages/user/UserPage';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -52,6 +53,11 @@ const App = () => {
           element={
             userAuth ? <Navigate to={pathUrl.user.HomePage} /> : <SignUp/>
           }
+        />
+        <Route
+          path={pathUrl.user.UserPage}
+          exact
+          element={<UserPage/>}
         />
         <Route path='*' exact element={<NotFound/>} />
       </Routes>

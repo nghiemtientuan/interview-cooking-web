@@ -1,5 +1,3 @@
-import React from 'react';
-
 export const pathUrl = {
   user: {
     HomePage: '/',
@@ -7,6 +5,7 @@ export const pathUrl = {
     SignIn: '/sign-in',
     SignUp: '/sign-up',
     RecipePage: '/recipes',
+    UserPage: '/user',
   },
   admin: {}
 }
