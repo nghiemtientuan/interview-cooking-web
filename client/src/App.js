@@ -1,20 +1,29 @@
 import React, {useEffect} from 'react';
-import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import {BrowserRouter as Router, Navigate, Route, Routes} from 'react-router-dom';
 import {useAuthState} from 'react-firebase-hooks/auth';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {fetchUserLoginRequest} from 'Src/actions/userActions';
 
 // styles
 import './App.css';
 
-// routers
-import routes from './routes/routes';
-
 // auth
 import {auth} from 'Src/auth';
 
+// utils
+import {pathUrl} from 'Src/routes/routes';
+
+// components
+import HomePage from 'Src/pages/user/HomePage';
+import ContactPage from 'Src/pages/user/ContactPage';
+import RecipePage from 'Src/pages/user/RecipePage';
+import SignIn from 'Src/pages/user/SignIn';
+import SignUp from 'Src/pages/user/SignUp';
+import NotFound from 'Src/pages/NotFound';
+
 const App = () => {
   const dispatch = useDispatch();
+  const {user: userAuth} = useSelector((state) => state.auth);
 
   const [user] = useAuthState(auth);
 
@@ -24,28 +33,27 @@ const App = () => {
     }
   }, [user]);
 
-  const showContentMenu = (routes) => {
-    let result = null;
-    if (routes.length > 0) {
-      result = routes.map((route, index) => {
-        return (
-          <Route
-            key={index}
-            path={route.path}
-            exact={route.exact}
-            element={route.main}
-          />
-        )
-      });
-    }
-
-    return result
-  };
-
   return (
     <Router>
       <Routes>
-        {showContentMenu(routes)}
+        <Route path={pathUrl.user.HomePage} exact element={<HomePage/>} />
+        <Route path={pathUrl.user.ContactPage} exact element={<ContactPage/>} />
+        <Route path={pathUrl.user.RecipePage + '/:id'} exact element={<RecipePage/>} />
+        <Route
+          path={pathUrl.user.SignIn}
+          exact
+          element={
+            userAuth ? <Navigate to={pathUrl.user.HomePage} /> : <SignIn/>
+          }
+        />
+        <Route
+          path={pathUrl.user.SignUp}
+          exact
+          element={
+            userAuth ? <Navigate to={pathUrl.user.HomePage} /> : <SignUp/>
+          }
+        />
+        <Route path='*' exact element={<NotFound/>} />
       </Routes>
     </Router>
   );
