@@ -5,7 +5,7 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   DeleteDateColumn,
-  BeforeInsert, BeforeUpdate, OneToMany,
+  BeforeInsert, BeforeUpdate, OneToMany, Unique,
 } from 'typeorm';
 
 // utils
@@ -19,7 +19,10 @@ export class User {
   @PrimaryGeneratedColumn()
   id: number = undefined;
 
-  @Column('text', {nullable: false})
+  @Column('varchar', {nullable: true, length: 255, unique: true})
+  firebase_uid: string = '';
+
+  @Column('varchar', {nullable: false, length: 255, unique: true})
   email: string = '';
 
   @Column('text', {nullable: true})

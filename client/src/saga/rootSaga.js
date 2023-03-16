@@ -1,9 +1,10 @@
-import { all, spawn, call } from 'redux-saga/effects';
-import { categorySagas } from './categorySagas';
-import { videoSagas } from './videoSagas';
-import { recipesSagas } from './recipesSagas';
-import { subscriberSagas } from './subscriberSagas';
-import { recipeSagas } from './recipeSagas';
+import {all, spawn, call} from 'redux-saga/effects';
+import {categorySagas} from './categorySagas';
+import {videoSagas} from './videoSagas';
+import {recipesSagas} from './recipesSagas';
+import {subscriberSagas} from './subscriberSagas';
+import {recipeSagas} from './recipeSagas';
+import {userSagas} from './userSagas';
 
 export default function* rootSaga() {
   const sagas = [
@@ -12,6 +13,7 @@ export default function* rootSaga() {
     recipesSagas,
     subscriberSagas,
     recipeSagas,
+    userSagas,
   ];
 
   yield all(sagas.map(saga => spawn(function* () {

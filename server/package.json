@@ -34,6 +34,7 @@
     "errorhandler": "^1.5.1",
     "express": "~4.16.1",
     "express-session": "^1.17.3",
+    "firebase-admin": "^11.5.0",
     "moment": "^2.29.4",
     "moment-timezone": "^0.5.41",
     "morgan": "~1.9.1",

@@ -14,9 +14,10 @@ export const index = async (req, res, next) => {
 };
 
 export const show = async (req, res, next) => {
+    const isAuthContent = !!req?.userFirebase
     const query = req.params;
     const {id} = query;
-    const result = await RecipeRepository.findRecipe(id);
+    const result = await RecipeRepository.findRecipe(id, isAuthContent);
 
     if (result) {
         return res.json(responseFormat(result));

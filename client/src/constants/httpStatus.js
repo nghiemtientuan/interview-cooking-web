@@ -5,4 +5,5 @@ export const HTTP_STATUS = {
   http_401: 401,
   http_403: 403,
   http_404: 404,
+  http_422: 422,
 };

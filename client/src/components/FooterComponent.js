@@ -1,5 +1,10 @@
 import React from 'react';
-import {app} from "../utils/app";
+
+// utils
+import {app} from 'Src/utils/app';
+
+// routers
+import {pathUrl} from 'Src/routes/routes';
 
 const FooterComponent = () => {
   return (
@@ -8,7 +13,7 @@ const FooterComponent = () => {
         <div className="uk-container uk-text-secondary uk-text-500">
           <div className="uk-child-width-1-2@s" data-uk-grid>
             <div>
-              <a href="#" className="uk-logo">{app.name}</a>
+              <a href={pathUrl.user.HomePage} className="uk-logo">{app.name}</a>
             </div>
             <div className="uk-flex uk-flex-middle uk-flex-right@s">
               <div data-uk-grid className="uk-child-width-auto uk-grid-small">
