@@ -4,9 +4,11 @@ const firebase = require('../auth');
 import {UserRepository} from '../repositories/UserRepository';
 
 export const userLoginMiddleware = async (request, response, next) => {
-  const headerToken = request?.headers?.authorization;
-  if (headerToken && headerToken.split(' ')[0] === 'Bearer') {
-    const token = headerToken.split(' ')[1];
+  const authorization = request?.headers?.authorization;
+  const token = authorization && authorization.includes('Bearer ') > -1
+    ? authorization.replace('Bearer ', '')
+    : null;
+  if (token && token !== 'null') {
     try {
       const userFirebase = await firebase.auth().verifyIdToken(token);
       const {uid, email} = userFirebase;

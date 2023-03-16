@@ -8,14 +8,17 @@ import * as Config from 'Src/constants/Config';
 import {auth} from 'Src/auth';
 
 export const callApi = async (endpoint, method = 'GET', body) => {
-  return axios({
+  const config = {
     method: method,
     url: Config.API_URL + "/" + endpoint,
     data: body,
-    headers: {
-      Authorization: `Bearer ${await getUserToken()}`,
-    },
-  });
+  }
+  const token = await getUserToken();
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+
+  return axios(config);
 };
 
 const getUserToken = async () => {
