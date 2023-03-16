@@ -25,3 +25,17 @@ export const logoutUserRequestSuccess = () => {
     type: Types.LOGOUT_USER_SUCCESS,
   };
 }
+
+export const updateUserRequest = (user) => {
+  return {
+    type: Types.UPDATE_USER,
+    user,
+  };
+}
+
+export const updateUserRequestSuccess = (user) => {
+  return {
+    type: Types.UPDATE_USER_SUCCESS,
+    user,
+  };
+}

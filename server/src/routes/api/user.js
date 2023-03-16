@@ -10,6 +10,7 @@ import * as UserController from '../../controller/api/user/UserController';
 
 /* GET user */
 router.get('/', UserController.getUser);
+router.post('/', UserController.updateUser);
 
 /* GET categories */
 router.get('/categories', CategoryController.index);

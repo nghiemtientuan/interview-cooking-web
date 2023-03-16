@@ -17,6 +17,11 @@ let authReducer = (state = initialState, action) => {
             state = STATE_DEFAULT;
 
             return {...state};
+        case Types.UPDATE_USER_SUCCESS:
+            state.user = action.user;
+            state.isLogin = true;
+
+            return {...state};
         default:
             return {...state};
     }

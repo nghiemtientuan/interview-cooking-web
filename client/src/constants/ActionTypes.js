@@ -30,3 +30,5 @@ export const FETCH_USER = 'user/FETCH_USER';
 export const FETCH_USER_SUCCESS = 'user/FETCH_USER_SUCCESS';
 export const LOGOUT_USER = 'user/LOGOUT_USER';
 export const LOGOUT_USER_SUCCESS = 'user/LOGOUT_USER_SUCCESS';
+export const UPDATE_USER = 'user/UPDATE_USER';
+export const UPDATE_USER_SUCCESS = 'user/UPDATE_USER_SUCCESS';

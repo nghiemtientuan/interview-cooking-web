@@ -68,6 +68,7 @@ const HeaderComponent = () => {
 
                   <ul className='dropdown-menu'>
                     <li>
+                      <a className='dropdown-item' href={pathUrl.user.UserPage}>Profile</a>
                       <a className='dropdown-item' onClick={handleLogout}>Logout</a>
                     </li>
                   </ul>

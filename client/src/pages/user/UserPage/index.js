@@ -8,10 +8,14 @@ import {yupResolver} from '@hookform/resolvers/yup/dist/yup';
 // components
 import HeaderComponent from 'Src/components/HeaderComponent';
 import FooterComponent from 'Src/components/FooterComponent';
+import {updateUserRequest} from "Src/actions/userActions";
 
 // styles
 const buttonShowUpdateStyle = css`
   margin-right: 20px;
+`;
+const inputBlock = css`
+  cursor: not-allowed;
 `;
 
 const UserPage = () => {
@@ -20,25 +24,36 @@ const UserPage = () => {
 
   // validate
   const schema = yup.object().shape({
-    email: yup
+    fullname: yup
       .string()
-      .email('Vui lòng nhập đúng định dạng email.')
-      .required('Vui lòng nhập email.'),
-    password: yup
+      .max(255, 'Tên đầy đủ không được quá 255 ký tự')
+      .required('Vui lòng nhập tên đầy đủ.'),
+    username: yup
       .string()
-      .required('Vui lòng nhập pasword'),
-    confirm_password: yup
+      .max(255, 'Tên hiển thị không được quá 255 ký tự')
+      .required('Vui lòng nhập tên hiển thị'),
+    birthday: yup
       .string()
-      .oneOf([yup.ref('password')], 'Mật khẩu không trùng khớp'),
+      .required('Vui lòng nhập ngày sinh'),
   });
 
   // local states
   const [isUpdate, setIsUpdate] = useState(false);
 
   // form
-  const {register, handleSubmit, formState: {errors}} = useForm({
+  const {register, handleSubmit, reset, formState: {errors}} = useForm({
     resolver: yupResolver(schema),
   });
+
+  useEffect(() => {
+    if (userAuth) {
+      reset({
+        fullname: userAuth?.fullname,
+        username: userAuth?.username,
+        birthday: userAuth?.birthday,
+      });
+    }
+  }, [userAuth]);
 
   const handleShowUpdate = (e) => {
     e.preventDefault();
@@ -46,8 +61,14 @@ const UserPage = () => {
   };
 
   const onSubmit = (data) => {
-    console.log(data, 'data')
-  }
+    const {fullname, username, birthday} = data;
+    const userData = {
+      fullname,
+      username,
+      birthday,
+    }
+    dispatch(updateUserRequest(userData));
+  };
 
   return (
     <>
@@ -69,8 +90,9 @@ const UserPage = () => {
                 id='email'
                 className='uk-input uk-form-large uk-border-pill col-8'
                 type='email'
+                css={inputBlock}
                 disabled
-                value={userAuth?.email}
+                value={userAuth?.email ?? ''}
               />
             </div>
 

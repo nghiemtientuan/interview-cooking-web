@@ -11,6 +11,18 @@ export const handleApiCallerError = (response) => {
     return;
   }
 
+  if (status === HTTP_STATUS.http_422) {
+    if (data?.data && typeof data?.data?.isArray) {
+      toast.error(data?.data.pop());
+
+      return;
+    }
+
+    toast.error('[422 ERROR] Lỗi kiểm tra dữ liệu');
+
+    return;
+  }
+
   if (data?.data && typeof data?.data?.isArray) {
     toast.error(data?.data.pop());
 

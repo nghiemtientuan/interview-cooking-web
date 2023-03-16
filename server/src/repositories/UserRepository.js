@@ -26,5 +26,9 @@ export const UserRepository = dataConnection.getRepository(User).extend({
         newUser.password = null;
 
         return this.save(newUser);
-    }
+    },
+
+    updateUser(user: User) {
+        return this.save(user);
+    },
 });
