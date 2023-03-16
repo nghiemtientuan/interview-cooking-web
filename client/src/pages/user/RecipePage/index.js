@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react';
 import {useDispatch} from 'react-redux';
+import {useParams} from 'react-router-dom';
 
 // components
 import HeaderComponent from '../../../components/HeaderComponent';
@@ -15,9 +16,8 @@ import RecipeCommentsComponent from './RecipeCommentsListComponent';
 // actions
 import {fetchSingleRecipeRequest} from 'Src/actions/recipeActions';
 
-const RecipePage = (props) => {
-  const {params} = props.match;
-  const {id} = params;
+const RecipePage = () => {
+  const {id} = useParams();
 
   const dispatch = useDispatch();
 
@@ -55,7 +55,7 @@ const RecipePage = (props) => {
         </div>
       </div>
 
-      <RelationRecipeComponent />
+      <RelationRecipeComponent recipeId={id}/>
 
       <FooterComponent />
     </>

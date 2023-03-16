@@ -6,6 +6,11 @@ import * as CategoryController from '../../controller/api/user/CategoryControlle
 import * as VideoController from '../../controller/api/user/VideoController';
 import * as RecipeController from '../../controller/api/user/RecipeController';
 import * as SubscriberController from '../../controller/api/user/SubscriberController';
+import * as UserController from '../../controller/api/user/UserController';
+
+/* GET user */
+router.get('/', UserController.getUser);
+router.post('/', UserController.updateUser);
 
 /* GET categories */
 router.get('/categories', CategoryController.index);
@@ -16,6 +21,7 @@ router.get('/videos', VideoController.index);
 /* GET recipes */
 router.get('/recipes', RecipeController.index);
 router.get('/recipes/:id', RecipeController.show);
+router.get('/recipes/:id/relations', RecipeController.getRelationRecipes);
 
 /* subscribers */
 router.post('/subscribers', SubscriberController.saveSubscriber);

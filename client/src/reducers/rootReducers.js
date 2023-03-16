@@ -1,16 +1,18 @@
 import { combineReducers } from 'redux';
-import tasks from './tasks';
 import categories from './categories';
 import videos from './videos';
 import recipes from './recipes';
+import relationRecipes from './relationRecipes';
 import recipe from './recipe';
+import auth from './auth';
 
 const rootReducer = combineReducers({
-  tasks,
   categories,
   videos,
   recipes,
+  relationRecipes,
   recipe,
+  auth,
 });
 
 export default rootReducer;

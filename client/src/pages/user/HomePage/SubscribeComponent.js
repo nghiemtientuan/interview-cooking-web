@@ -1,6 +1,24 @@
-import React from 'react';
+import React, {useState} from 'react';
+import {useDispatch} from 'react-redux';
+
+import {postSubscriberRequest} from 'Src/actions/subscriberActions';
 
 const SubscribeComponent = () => {
+  const dispatch = useDispatch();
+
+  const [email, setEmail] = useState('');
+
+  const onChange = (e) => {
+    const {target} = e;
+    const {value} = target;
+    setEmail(value);
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    dispatch(postSubscriberRequest(email, () => setEmail('')));
+  }
+
   return (
     <div className="uk-container">
       <div className="uk-background-primary uk-border-rounded-large uk-light">
@@ -19,10 +37,18 @@ const SubscribeComponent = () => {
                       type="email"
                       placeholder="Email Address"
                       className="uk-input uk-form-large uk-width-1-1 uk-border-pill"
+                      onChange={onChange}
+                      value={email}
                     />
                   </div>
+
                   <div className="uk-width-1-1 uk-width-auto@s">
-                    <input type="submit" value="Subscribe" className="uk-button uk-button-large uk-button-warning" />
+                    <input
+                      type="submit"
+                      value="Subscribe"
+                      className="uk-button uk-button-large uk-button-warning"
+                      onClick={onSubmit}
+                    />
                   </div>
                 </div>
               </form>

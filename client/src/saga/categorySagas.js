@@ -6,6 +6,7 @@ import { fetchCategoriesRequestSuccess } from 'Src/actions/categoryActions';
 
 // utils
 import { HTTP_STATUS } from 'Src/constants/httpStatus';
+import {handleApiCallerError} from 'Src/utils/handleApiCallerError';
 
 // Sagas
 export function* categorySagas() {
@@ -22,6 +23,7 @@ function* onFetchCategories() {
     return;
   }
 
+  handleApiCallerError(result);
   console.error('[ERROR] onFetchCategories error')
 }
 

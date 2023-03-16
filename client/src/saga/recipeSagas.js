@@ -8,6 +8,7 @@ import { fetchSingleRecipeRequestSuccess } from 'Src/actions/recipeActions';
 
 // utils
 import { HTTP_STATUS } from 'Src/constants/httpStatus';
+import {handleApiCallerError} from 'Src/utils/handleApiCallerError';
 
 // Sagas
 export function* recipeSagas() {
@@ -24,6 +25,7 @@ function* onFetchSingleRecipe(action) {
     return;
   }
 
+  handleApiCallerError(result);
   console.error('[ERROR] onFetchSingleRecipe error')
 }
 

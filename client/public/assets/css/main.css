@@ -3367,6 +3367,10 @@ select.uk-form-width-xsmall {
   stroke: #eb4a36 !important;
 }
 
+.uk-card-video .uk-inline .uk-position-small .uk-margin-small-bottom {
+  color: #EB4A37;
+}
+
 /* ========================================================================
    Component: Close
  ========================================================================== */
@@ -4710,7 +4714,9 @@ ul.uk-nav-sub {
 
 /* Active */
 .uk-pagination > .uk-active > * {
-  color: #4a4a4a;
+  /*color: #4a4a4a;*/
+  color: #EB4A37 !important;
+  text-decoration: underline !important;
 }
 
 /* Disabled */

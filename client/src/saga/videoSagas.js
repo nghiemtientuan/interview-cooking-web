@@ -6,6 +6,7 @@ import { fetchVideosRequestSuccess } from 'Src/actions/videoActions';
 
 // utils
 import { HTTP_STATUS } from 'Src/constants/httpStatus';
+import {handleApiCallerError} from 'Src/utils/handleApiCallerError';
 
 // Sagas
 export function* videoSagas() {
@@ -17,11 +18,12 @@ function* onFetchVideos() {
 
   if (result.status === HTTP_STATUS.http_200) {
     const { data } = result;
-    yield put(fetchVideosRequestSuccess(data));
+    yield put(fetchVideosRequestSuccess(data.data));
 
     return;
   }
 
+  handleApiCallerError(result);
   console.error('[ERROR] onFetchVideos error')
 }
 

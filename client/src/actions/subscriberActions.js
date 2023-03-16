@@ -1,14 +1,9 @@
 import * as Types from 'Src/constants/ActionTypes';
 
-export const postSubscriberRequest = (email) => {
+export const postSubscriberRequest = (email, callback = null) => {
   return {
-    type: Types.FETCH_RECIPES,
-    email
-  };
-}
-
-export const postSubscriberRequestSuccess = () => {
-  return {
-    type: Types.FETCH_RECIPES_SUCCESS
+    type: Types.POST_SUBSCRIBER,
+    email,
+    callback,
   };
 }

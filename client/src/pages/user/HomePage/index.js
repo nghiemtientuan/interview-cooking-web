@@ -19,6 +19,7 @@ const HomePage = (_props) => {
   const [filter, setFilter] = useState({
     keyword: '',
     subCategory: null,
+    page: 1,
   });
 
   useEffect(() => {
