@@ -10,7 +10,7 @@ import {app} from 'Src/utils/app';
 import signInImage from 'Public/assets/img/sign-in.png';
 
 // auth
-import {auth} from 'Src/auth'
+import {auth} from 'Src/auth';
 
 // styles
 const signInImageStyle = css`

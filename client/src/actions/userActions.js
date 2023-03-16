@@ -12,3 +12,16 @@ export const fetchUserLoginRequestSuccess = (user) => {
     user,
   };
 }
+
+export const logoutUserRequest = (callback) => {
+  return {
+    type: Types.LOGOUT_USER,
+    callback,
+  };
+}
+
+export const logoutUserRequestSuccess = () => {
+  return {
+    type: Types.LOGOUT_USER_SUCCESS,
+  };
+}
