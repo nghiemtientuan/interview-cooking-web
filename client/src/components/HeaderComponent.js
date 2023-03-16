@@ -74,11 +74,11 @@ const HeaderComponent = () => {
                 </div>
               ) : (
                 <>
-                  <ul className='uk-navbar-nav uk-visible@m'>
+                  <ul className='uk-navbar-nav'>
                     <li><a href={pathUrl.user.SignIn}>Sign In</a></li>
                   </ul>
 
-                  <div className='uk-navbar-item'>
+                  <div className='uk-navbar-item uk-visible@m'>
                     <div>
                       <a className='uk-button uk-button-primary' href={pathUrl.user.SignUp}>Sign Up</a>
                     </div>
