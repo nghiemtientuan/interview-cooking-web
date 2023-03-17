@@ -13,3 +13,52 @@ export const fetchSingleRecipeRequestSuccess = (recipe) => {
     recipe,
   };
 }
+
+export const createNewCommentRecipesRequest = (id, comment, callback) => {
+  return {
+    type: Types.CREATE_COMMENT_RECIPE,
+    id,
+    comment,
+    callback,
+  };
+}
+
+export const createNewCommentRecipesRequestSuccess = (recipe) => {
+  return {
+    type: Types.CREATE_COMMENT_RECIPE_SUCCESS,
+    recipe,
+  };
+}
+
+export const updateCommentRecipeRequest = (id, commentId, content, callback) => {
+  return {
+    type: Types.UPDATE_COMMENT_RECIPE,
+    id,
+    commentId,
+    content,
+    callback,
+  };
+}
+
+export const updateCommentRecipeRequestSuccess = (recipe) => {
+  return {
+    type: Types.UPDATE_COMMENT_RECIPE_SUCCESS,
+    recipe,
+  };
+}
+
+export const deleteCommentRecipeRequest = (id, commentId) => {
+  return {
+    type: Types.DELETE_COMMENT_RECIPE,
+    id,
+    commentId,
+  };
+}
+
+export const deleteCommentRecipeRequestSuccess = (recipe) => {
+  return {
+    type: Types.DELETE_COMMENT_RECIPE_SUCCESS,
+    recipe,
+  };
+}
+

@@ -3,7 +3,10 @@ const firebase = require('../auth');
 // repositories
 import {UserRepository} from '../repositories/UserRepository';
 
-export const userLoginMiddleware = async (request, response, next) => {
+// responses
+import {response403} from '../utils/response403';
+
+export const isLoginMiddleware = async (request, response, next) => {
   const authorization = request?.headers?.authorization;
   const token = authorization && authorization.includes('Bearer ') > -1
     ? authorization.replace('Bearer ', '')
@@ -23,12 +26,9 @@ export const userLoginMiddleware = async (request, response, next) => {
 
       return;
     } catch (error) {
-      console.error('[userLoginMiddleware] Error: ' + error)
-      next();
-
-      return;
+      // Case: verify token is not right
     }
   }
 
-  next();
+  return response403(response, 'User need login!');
 };
