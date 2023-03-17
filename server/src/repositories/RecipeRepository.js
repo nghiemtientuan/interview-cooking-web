@@ -5,6 +5,7 @@ import {dataConnection} from '../config/database';
 import {Recipe} from '../entities/Recipe';
 import {RecipeStep} from '../entities/RecipeStep';
 import {RecipeIngredient} from '../entities/RecipeIngredient';
+import {RecipeComment} from '../entities/RecipeComment';
 
 // utils
 import {constant} from '../utils/const';
@@ -38,8 +39,9 @@ export const RecipeRepository = dataConnection.getRepository(Recipe).extend({
     },
 
     async findRecipe(id, isAuthContent: false) {
+        let recipe = null;
         if (isAuthContent) {
-            return await this.findOne({
+            recipe = await this.findOne({
                 where: {
                     id: id,
                 },
@@ -47,20 +49,26 @@ export const RecipeRepository = dataConnection.getRepository(Recipe).extend({
                     'recipeIngredients',
                     'recipeSteps',
                     'recipeTags',
-                    'recipeComments.user',
                     'subCategory',
                 ],
             });
+            recipe.recipeComments = await dataConnection.getRepository(RecipeComment)
+              .createQueryBuilder('recipeComment')
+              .where('recipeComment.recipe_id = :id', {id})
+              .leftJoinAndSelect('recipeComment.user', 'user')
+              .orderBy('recipeComment.created_at', 'ASC')
+              .getMany();
+
+            return recipe;
         }
 
         const limitContent = constant.limitContent;
-        const recipe = await this.findOne({
+        recipe = await this.findOne({
             where: {
                 id: id,
             },
             relations: [
                 'recipeTags',
-                'recipeComments.user',
                 'subCategory',
             ],
         });
@@ -73,6 +81,12 @@ export const RecipeRepository = dataConnection.getRepository(Recipe).extend({
           .createQueryBuilder('RecipeIngredient')
           .where('recipe_id = :id', {id})
           .limit(limitContent)
+          .getMany();
+        recipe.recipeComments = await dataConnection.getRepository(RecipeComment)
+          .createQueryBuilder('recipeComment')
+          .where('recipeComment.recipe_id = :id', {id})
+          .leftJoinAndSelect('recipeComment.user', 'user')
+          .orderBy('recipeComment.created_at', 'ASC')
           .getMany();
 
         return recipe;

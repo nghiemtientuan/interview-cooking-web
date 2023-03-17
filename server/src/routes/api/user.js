@@ -8,6 +8,9 @@ import * as RecipeController from '../../controller/api/user/RecipeController';
 import * as SubscriberController from '../../controller/api/user/SubscriberController';
 import * as UserController from '../../controller/api/user/UserController';
 
+// middlewares
+import {isLoginMiddleware} from '../../middleware/isLoginMiddleware';
+
 /* GET user */
 router.get('/', UserController.getUser);
 router.post('/', UserController.updateUser);
@@ -22,6 +25,9 @@ router.get('/videos', VideoController.index);
 router.get('/recipes', RecipeController.index);
 router.get('/recipes/:id', RecipeController.show);
 router.get('/recipes/:id/relations', RecipeController.getRelationRecipes);
+router.post('/recipes/:id/comments', [isLoginMiddleware], RecipeController.createNewComment);
+router.patch('/recipes/:id/comments/:commentId', [isLoginMiddleware], RecipeController.updateComment);
+router.delete('/recipes/:id/comments/:commentId', [isLoginMiddleware], RecipeController.deleteComment);
 
 /* subscribers */
 router.post('/subscribers', SubscriberController.saveSubscriber);

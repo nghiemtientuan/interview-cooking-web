@@ -11,7 +11,7 @@ const RecipeStepsListComponent = () => {
       <h3>How to Make It</h3>
       {
         recipe?.recipeSteps?.map((step, stepIndex) => (
-          <div id={`step-${stepIndex + 1}`} className='uk-grid-small uk-margin-medium-top' data-uk-grid>
+          <div key={stepIndex} id={`step-${stepIndex + 1}`} className='uk-grid-small uk-margin-medium-top' data-uk-grid>
             <div className='uk-width-auto'>
               <a
                 className='uk-step-icon'

@@ -23,8 +23,12 @@ export const handleApiCallerError = (response) => {
     return;
   }
 
-  if (data?.data && typeof data?.data?.isArray) {
-    toast.error(data?.data.pop());
+  if (data?.data) {
+    if (Array.isArray(data?.data)) {
+      toast.error(data?.data.pop());
+    } else {
+      toast.error(data?.data);
+    }
 
     return;
   }
